@@ -15,7 +15,7 @@ const PostList: React.FC = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch("http://localhost:5000/api/posts");
+      const response = await fetch("https://kimochisns-backend.onrender.com/api/posts");
       const data = await response.json();
       setPosts(data);
       console.log(data);

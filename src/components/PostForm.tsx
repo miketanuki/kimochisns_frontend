@@ -7,7 +7,7 @@ const PostForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await axios.post('http://localhost:5000/api/posts', { content: post }, {
+    await axios.post('https://kimochisns-backend.onrender.com/api/posts', { content: post }, {
       headers: {
         'Content-Type': 'application/json'
       }
