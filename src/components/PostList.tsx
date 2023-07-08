@@ -12,6 +12,8 @@ type Post = {
 
 const PostList: React.FC<{ posts: Post[] }> = ({ posts }) => {
 
+  console.log(posts);
+  
   return (
     <div style={{width:"100%"}}>
       <List sx={{ borderTop: "1px solid #ccc" }}>

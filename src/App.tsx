@@ -15,7 +15,7 @@ const App: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
 
   const api_url = process.env.NODE_ENV === 'production'
-  ? 'https://kimochisns-backend.onrender.com/api/posts'
+  ? 'https://kimochisns-backend-dev.onrender.com/api/posts'
   : 'http://localhost:5000/api/posts';
 
   const fetchPosts = async () => {

@@ -21,10 +21,10 @@ const SentimentalTag: React.FC<Props> = (props) => {
   `;
 
   useEffect(() => {
-    if (props.sentiment_score < 2) {
+    if (props.sentiment_score < 3) {
       setSentimentalTag("ちくちく");
       setSentimentalTagColor("#FFB6C1");
-    } else if (props.sentiment_score >= 2 && props.sentiment_score < 4) {
+    } else if (props.sentiment_score >= 3 && props.sentiment_score < 5) {
       setSentimentalTag("ふつー");
       setSentimentalTagColor("#FFD700");
     } else {
