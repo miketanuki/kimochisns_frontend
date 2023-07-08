@@ -14,21 +14,19 @@ type Post = {
 const App: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
 
-  const api_url = process.env.NODE_ENV === 'production'
-  ? 'https://kimochisns-backend-dev.onrender.com/api/posts'
-  : 'http://localhost:5000/api/posts';
+  const api_url =
+    process.env.NODE_ENV === "production"
+      ? "https://kimochisns-backend.onrender.com/api/posts"
+      : "http://localhost:5000/api/posts";
 
   const fetchPosts = async () => {
-    const response = await fetch(
-      api_url
-    );
+    const response = await fetch(api_url);
     const data = await response.json();
     setPosts(data);
     console.log(data);
   };
 
   useEffect(() => {
-
     fetchPosts();
   }, []);
   console.log(posts);
@@ -38,9 +36,9 @@ const App: React.FC = () => {
       <Navbar />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div style={{ marginBottom: "48px" }}>
-          <PostForm fetchPosts={fetchPosts}/>
+          <PostForm fetchPosts={fetchPosts} />
         </div>
-        <PostList posts={posts}/>
+        <PostList posts={posts} />
       </div>
     </div>
   );
