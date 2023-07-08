@@ -1,18 +1,32 @@
 import React, { useState } from "react";
 import { TextField, Button } from "@mui/material";
-import axios from 'axios';
+import axios from "axios";
 
-const PostForm: React.FC = () => {
+const api_url =
+  process.env.NODE_ENV === "production"
+    ? "https://kimochisns-backend.onrender.com/api/posts"
+    : "http://localhost:5000/api/posts";
+
+type PostFormProps = {
+  fetchPosts: () => Promise<void>;
+};
+
+const PostForm: React.FC<PostFormProps> = ({ fetchPosts }) => {
   const [post, setPost] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await axios.post('https://kimochisns-backend.onrender.com/api/posts', { content: post }, {
-      headers: {
-        'Content-Type': 'application/json'
+    await axios.post(
+      api_url,
+      { content: post },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
-    });
-    setPost('');
+    );
+    setPost("");
+    fetchPosts();
   };
 
   return (

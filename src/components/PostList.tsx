@@ -10,23 +10,7 @@ type Post = {
   sentiment_score: number;
 };
 
-const PostList: React.FC = () => {
-
-  const [posts, setPosts] = useState<Post[]>([]);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await fetch(
-        "https://kimochisns-backend.onrender.com/api/posts"
-      );
-      const data = await response.json();
-      setPosts(data);
-      console.log(data);
-    };
-
-    fetchPosts();
-  }, []);
-  console.log(posts);
+const PostList: React.FC<{ posts: Post[] }> = ({ posts }) => {
 
   return (
     <div style={{width:"100%"}}>
