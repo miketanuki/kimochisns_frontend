@@ -16,11 +16,11 @@ const Navbar: React.FC = () => {
       <AppBar position="static">
         <Toolbar>
           <StyledTypography variant="h6">
-            My SNS
+            Kimochi
           </StyledTypography>
-          <Button color="inherit">Home</Button>
+          {/* <Button color="inherit">Home</Button>
           <Button color="inherit">Profile</Button>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit">Login</Button> */}
         </Toolbar>
       </AppBar>
     </StyledDiv>
