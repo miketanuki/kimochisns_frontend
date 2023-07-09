@@ -3,6 +3,8 @@ import Navbar from "./components/Navbar";
 import PostForm from "./components/PostForm";
 import PostList from "./components/PostList";
 import "./index.css";
+import PostButton from "./components/PostButton";
+import Kimochi from "./components/Kimochi";
 
 type Post = {
   id: number;
@@ -13,6 +15,9 @@ type Post = {
 
 const App: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
+  const [showPostButton, setShowPostButton] = useState(false);
+  const averageScore =
+    posts.reduce((sum, post) => sum + post.sentiment_score, 0) / posts.length;
 
   const api_url =
     process.env.NODE_ENV === "production"
@@ -35,11 +40,16 @@ const App: React.FC = () => {
     <div>
       <Navbar />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Kimochi score={averageScore} />
         <div style={{ marginBottom: "48px" }}>
-          <PostForm fetchPosts={fetchPosts} />
+          <PostForm fetchPosts={fetchPosts} showPostButton={showPostButton} />
         </div>
         <PostList posts={posts} />
       </div>
+      <PostButton
+        setShowPostButton={setShowPostButton}
+        showPostButton={showPostButton}
+      />
     </div>
   );
 };
