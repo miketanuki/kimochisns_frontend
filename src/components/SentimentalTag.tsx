@@ -15,7 +15,7 @@ const SentimentalTag: React.FC<Props> = (props) => {
     background-color: ${sentimentalTagColor};
     color: #333;
     font-size: 12px;
-    width: 120px;
+    width: 80px;
     height: 30px;
     margin-left: auto;
   `;
@@ -35,7 +35,7 @@ const SentimentalTag: React.FC<Props> = (props) => {
 
   return (
     <div style={{ display: "flex", justifyContent: "flex-end" }}>
-      <StyledChip label={`${sentimentalTag}ことば`} />
+      <StyledChip label={`${sentimentalTag}`} />
     </div>
   );
 };

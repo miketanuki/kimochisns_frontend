@@ -18,6 +18,8 @@ const App: React.FC = () => {
   const [showPostButton, setShowPostButton] = useState(false);
   const averageScore =
     posts.reduce((sum, post) => sum + post.sentiment_score, 0) / posts.length;
+    console.log(averageScore);
+    
 
   const api_url =
     process.env.NODE_ENV === "production"
@@ -37,12 +39,12 @@ const App: React.FC = () => {
   console.log(posts);
 
   return (
-    <div>
+    <div className="pb-16">
       <Navbar />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Kimochi score={averageScore} />
         <div style={{ marginBottom: "48px" }}>
-          <PostForm fetchPosts={fetchPosts} showPostButton={showPostButton} />
+          <PostForm fetchPosts={fetchPosts} setShowPostButton={setShowPostButton} showPostButton={showPostButton} />
         </div>
         <PostList posts={posts} />
       </div>

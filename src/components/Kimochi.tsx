@@ -1,4 +1,5 @@
 import React from "react";
+import "../index.css";
 
 type KimochiProps = {
   score: number;
@@ -31,7 +32,7 @@ const SentimentImage: React.FC<KimochiProps> = ({ score }) => {
     }
   };
 
-  return <div>{getImage(score)}</div>;
+  return <div className="max-w-xl mx-auto">{getImage(score)}</div>;
 };
 
 export default SentimentImage;
