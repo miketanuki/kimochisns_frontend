@@ -9,10 +9,12 @@ type Post = {
 };
 
 const PostList: React.FC<{ posts: Post[] }> = ({ posts }) => {
+  const sortedPosts = [...posts].sort((a, b) => b.id - a.id);
+
   return (
     <div style={{ width: "100%" }}>
       <List sx={{ borderTop: "1px solid #ccc" }}>
-        {posts.map((post) => (
+        {sortedPosts.map((post) => (
           <ListItem
             key={post.id}
             sx={{ borderBottom: "1px solid #ccc", padding: "24px 16px" }}
