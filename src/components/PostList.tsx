@@ -20,7 +20,7 @@ const PostList: React.FC<{ posts: Post[] }> = ({ posts }) => {
         {posts.map((post) => (
           <ListItem key={post.id} sx={{ borderBottom: "1px solid #ccc" }}>
             <div style={{width:"100%"}}>
-              <Typography variant="h6" width={"100%"}>{post.id}</Typography>
+              {/* <Typography variant="h6" width={"100%"}>{post.id}</Typography> */}
               <Typography variant="body1">{post.content}</Typography>
             <SentimentalTag
               sentiment_score={post.sentiment_score}
