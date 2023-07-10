@@ -4,7 +4,6 @@ import SentimentalTag from "./SentimentalTag";
 type Post = {
   id: number;
   content: string;
-  user: string;
   sentiment_score: number;
 };
 
@@ -21,7 +20,7 @@ const PostList: React.FC<{ posts: Post[] }> = ({ posts }) => {
           >
             <div style={{ width: "100%" }}>
               {/* <Typography variant="h6" width={"100%"}>{post.id}</Typography> */}
-              <Typography variant="body1">{post.content}</Typography>
+                <Typography variant="body1" sx={{padding: "16px 0"}}>{post.content}</Typography>
               <SentimentalTag
                 sentiment_score={post.sentiment_score}
               ></SentimentalTag>
