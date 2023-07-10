@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useMemo, useState } from "react";
-import ApexCharts from "apexcharts";
+import React, { useMemo } from "react";
 import ReactApexChart from "react-apexcharts";
+import { ApexOptions } from "apexcharts";
 
 interface Post {
   id: number;
@@ -27,25 +27,29 @@ const KimochiDonut: React.FC<Props> = ({ posts }) => {
     return count;
   }, [posts]);
 
-  const chartRef = useRef<HTMLDivElement>(null);
+  const options: ApexOptions = useMemo(() => ({
+    chart: {
+      type: "donut",
+    },
+    labels: ["Category 1", "Category 2", "Category 3"],
+    colors: ["#FFB6C1", "#FFD700", "#90EE90"],
+    legend: {
+      show: false,
+    },
+    dataLabels: {
+      enabled: false,
+    },
+  }), []);
 
-  useEffect(() => {
-    if (chartRef.current) {
-      const chart = new ApexCharts(chartRef.current, {
-        chart: {
-          type: "donut",
-        },
-        series: sentimentalData,
-        labels: ["Category 1", "Category 2", "Category 3"],
-        colors: ["#FFB6C1", "#FFD700", "#90EE90"],
-      });
-      chart.render();
-      // チャートを更新する
-      chart.updateSeries(sentimentalData);
-    }
-  }, [sentimentalData]);
-
-  return <div ref={chartRef} />;
+  return (
+    <div style={{ display: 'inline-block',width:"80px" }}>
+      <ReactApexChart 
+        options={options} 
+        series={sentimentalData} 
+        type="donut" 
+      />
+    </div>
+  );
 };
 
 export default KimochiDonut;

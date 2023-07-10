@@ -2,11 +2,8 @@ import React, { useState } from "react";
 import { TextField, Button } from "@mui/material";
 import axios from "axios";
 import "../index.css";
+import api_url from "../apiConfig";
 
-const api_url =
-  process.env.NODE_ENV === "production"
-    ? "https://kimochisns-backend.onrender.com/api/posts"
-    : "http://localhost:5000/api/posts";
 
 type PostFormProps = {
   fetchPosts: () => Promise<void>;
