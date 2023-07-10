@@ -12,6 +12,12 @@ interface Props {
   posts: Post[];
 }
 
+
+/**
+ * KimochiDonutコンポーネント、感情スコアに基づいて投稿をカテゴリー分けし、ドーナツチャートで表示。
+ * 
+ * @param posts - 各投稿のid、content、sentiment_scoreを含むPostオブジェクトの配列。
+ */
 const KimochiDonut: React.FC<Props> = ({ posts }) => {
   const sentimentalData = useMemo(() => {
     let count: number[] = [0, 0, 0];

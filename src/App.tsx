@@ -5,7 +5,6 @@ import PostList from "./components/PostList";
 import "./index.css";
 import PostButton from "./components/PostButton";
 import Kimochi from "./components/Kimochi";
-import KimochiDonut from "./components/KimochiDonut";
 import api_url from "./apiConfig";
 
 type Post = {
@@ -24,7 +23,7 @@ const App: React.FC = () => {
     const data = await response.json();
     setPosts(data);
     console.log(data);
-  }, [api_url]);
+  }, []);
 
   useEffect(() => {
     fetchPosts();
@@ -40,7 +39,7 @@ const App: React.FC = () => {
     <div className="pb-16">
       <Navbar averageScore={averageScore} posts={posts} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Kimochi score={averageScore} />
+        <Kimochi averageScore={averageScore} />
         <div style={{ marginBottom: "48px" }}>
           <PostForm
             fetchPosts={fetchPosts}

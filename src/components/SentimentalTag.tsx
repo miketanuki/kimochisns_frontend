@@ -1,4 +1,3 @@
-// BEGIN: mui-sentimental-tag
 import React, { useState, useEffect } from "react";
 import Chip from "@mui/material/Chip";
 import { styled } from "@mui/system";
@@ -41,4 +40,3 @@ const SentimentalTag: React.FC<Props> = (props) => {
 };
 
 export default SentimentalTag;
-// END: mui-sentimental-tag
