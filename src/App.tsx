@@ -5,11 +5,11 @@ import PostList from "./components/PostList";
 import "./index.css";
 import PostButton from "./components/PostButton";
 import Kimochi from "./components/Kimochi";
+import KimochiDonut from "./components/KimochiDonut";
 
 type Post = {
   id: number;
   content: string;
-  user: string;
   sentiment_score: number;
 };
 
@@ -51,6 +51,7 @@ const App: React.FC = () => {
   return (
     <div className="pb-16">
       <Navbar averageScore={averageScore}/>
+      <KimochiDonut posts={posts} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Kimochi score={averageScore} />
         <div style={{ marginBottom: "48px" }}>

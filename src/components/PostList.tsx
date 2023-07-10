@@ -4,7 +4,6 @@ import SentimentalTag from "./SentimentalTag";
 type Post = {
   id: number;
   content: string;
-  user: string;
   sentiment_score: number;
 };
 
