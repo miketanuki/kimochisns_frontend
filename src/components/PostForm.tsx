@@ -111,6 +111,7 @@ const PostForm: React.FC<PostFormProps> = ({
               backgroundColor: post ? "#e3f2fd" : "#ececec",
             }}
             disabled={!post}
+            onClick={() => setShowPostButton(false)}
           >
             つぶやく
           </Button>
