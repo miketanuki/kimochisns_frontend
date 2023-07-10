@@ -1,6 +1,12 @@
 import React from "react";
 import { AppBar, Toolbar, Typography, Button } from "@mui/material";
 import { styled } from "@mui/system";
+import KimochiMeter from "./KimochiMeter";
+import { type } from "os";
+
+type Props = {
+  averageScore: number;
+};
 
 const StyledDiv = styled("div")({
   flexGrow: 1,
@@ -11,7 +17,7 @@ const StyledTypography = styled(Typography)({
   flexGrow: 1,
 });
 
-const Navbar: React.FC = () => {
+const Navbar: React.FC<Props> = ({averageScore}) => {
   return (
     <StyledDiv>
       <AppBar
@@ -25,6 +31,7 @@ const Navbar: React.FC = () => {
           >
             Kimochi
           </StyledTypography>
+          <KimochiMeter averageScore={averageScore} />
           {/* <Button color="inherit">Home</Button>
           <Button color="inherit">Profile</Button>
           <Button color="inherit">Login</Button> */}

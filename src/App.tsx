@@ -16,9 +16,19 @@ type Post = {
 const App: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [showPostButton, setShowPostButton] = useState(false);
-  const averageScore =
-    posts.reduce((sum, post) => sum + post.sentiment_score, 0) / posts.length;
-    console.log(averageScore);
+  const useAverageScore = (posts: Post[]) => {
+    const [averageScore, setAverageScore] = useState(0);
+  
+    useEffect(() => {
+      const sum = posts.reduce((sum, post) => sum + post.sentiment_score, 0);
+      const newAverageScore = sum / posts.length;
+      setAverageScore(newAverageScore);
+    }, [posts]);
+  
+    return averageScore;
+  };
+
+  const averageScore = useAverageScore(posts);
     
 
   const api_url =
@@ -40,7 +50,7 @@ const App: React.FC = () => {
 
   return (
     <div className="pb-16">
-      <Navbar />
+      <Navbar averageScore={averageScore}/>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Kimochi score={averageScore} />
         <div style={{ marginBottom: "48px" }}>
