@@ -10,7 +10,7 @@ type Post = {
 };
 
 type Props = {
-  averageScore: number;
+  averageScore: null | number;
   posts: Post[];
 };
 

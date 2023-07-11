@@ -16,7 +16,7 @@ type Post = {
 const App: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [showPostButton, setShowPostButton] = useState(false);
-  const [averageScore, setAverageScore] = useState(0);
+  const [averageScore, setAverageScore] = useState<number | null>(null);  
 
   const fetchPosts = useCallback(async () => {
     const response = await fetch(api_url);
@@ -30,6 +30,10 @@ const App: React.FC = () => {
   }, [fetchPosts]);
 
   useEffect(() => {
+    if (posts.length === 0) {
+      setAverageScore(null);
+      return;
+    }
     const sum = posts.reduce((sum, post) => sum + post.sentiment_score, 0);
     const newAverageScore = posts.length > 0 ? sum / posts.length : 0;
     setAverageScore(newAverageScore);

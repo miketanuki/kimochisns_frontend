@@ -33,7 +33,7 @@ const KimochiDonut: React.FC<Props> = ({ posts }) => {
     return count;
   }, [posts]);
 
-  const options: ApexOptions = useMemo(() => ({
+  const options: ApexOptions = {
     chart: {
       type: "donut",
     },
@@ -45,7 +45,7 @@ const KimochiDonut: React.FC<Props> = ({ posts }) => {
     dataLabels: {
       enabled: false,
     },
-  }), []);
+  };  
 
   return (
     <div style={{ display: 'inline-block',width:"80px" }}>
