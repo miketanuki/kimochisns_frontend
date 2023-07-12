@@ -11,6 +11,11 @@ type KimochiProps = {
  */
 const SentimentImage: React.FC<KimochiProps> = ({ averageScore }) => {
   const [opacity, setOpacity] = useState(0);
+  const [currentImage, setCurrentImage] = useState<null | string>(null);
+
+  useEffect(() => {
+    setOpacity(0);
+  }, [currentImage]);
 
   const handleImageLoad = () => {
     setOpacity(1);
@@ -39,9 +44,12 @@ const SentimentImage: React.FC<KimochiProps> = ({ averageScore }) => {
     });
 
     if (image) {
+      if (currentImage !== image.src) {
+        setCurrentImage(image.src);
+      }
       return (
         <img
-          src={image.src}
+          src={currentImage || ""}
           alt={image.alt}
           style={{ opacity, transition: "0.5s ease-in-out" }}
           onLoad={handleImageLoad}
