@@ -1,17 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../index.css";
 
 type KimochiProps = {
-  averageScore: number;
+  averageScore: null | number;
 };
-
 
 /**
  * スコアに応じた気持ちの画像を表示するコンポーネント
  * @param averageScore 平均スコア
  */
 const SentimentImage: React.FC<KimochiProps> = ({ averageScore }) => {
-  const getImage = (averageScore: number) => {
+  const [opacity, setOpacity] = useState(0);
+  const [currentImage, setCurrentImage] = useState<null | string>(null);
+
+  useEffect(() => {
+    setOpacity(0);
+  }, [currentImage]);
+
+  const handleImageLoad = () => {
+    setOpacity(1);
+  };
+
+  const getImage = (averageScore: null | number) => {
+    if (averageScore === null) {
+      return null;
+    }
     const images = [
       { scoreRange: [0, 1], src: "kimochi/ame.svg", alt: "score 0-1" },
       { scoreRange: [1, 2], src: "kimochi/ame.svg", alt: "score 1-2" },
@@ -31,13 +44,27 @@ const SentimentImage: React.FC<KimochiProps> = ({ averageScore }) => {
     });
 
     if (image) {
-      return <img src={image.src} alt={image.alt} />;
+      if (currentImage !== image.src) {
+        setCurrentImage(image.src);
+      }
+      return (
+        <img
+          src={currentImage || ""}
+          alt={image.alt}
+          style={{ opacity, transition: "0.5s ease-in-out" }}
+          onLoad={handleImageLoad}
+        />
+      );
     } else {
       return null;
     }
   };
 
-  return <div className="max-w-xl mx-auto mt-4">{getImage(averageScore)}</div>;
+  return (
+    <div className="max-w-xl mx-auto mt-4 min-h-[300px] md:min-h-[500px]">
+      {getImage(averageScore)}
+    </div>
+  );
 };
 
 export default SentimentImage;
