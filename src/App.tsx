@@ -41,8 +41,8 @@ const App: React.FC = () => {
 
   return (
     <div className="pb-16">
-      <Navbar averageScore={averageScore} posts={posts} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Navbar averageScore={averageScore} posts={posts} />
         <Kimochi averageScore={averageScore} />
         <div style={{ marginBottom: "48px" }}>
           <PostForm
