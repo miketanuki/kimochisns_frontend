@@ -9,7 +9,16 @@ type KimochiProps = {
 const SentimentImage: React.FC<KimochiProps> = ({ averageScore }) => {
   const [currentImage, setCurrentImage] = useState<string | null>(null);
   const [nextImage, setNextImage] = useState<string | null>(null);
+  const [isFirstLoad, setIsFirstLoad] = useState<boolean>(true);
+  const [opacity, setOpacity] = useState<number>(0);
   // const [testAvaregeScore, setTestAvaregeScore] = useState<number>(1);
+  
+  useEffect(() => {
+    if (isFirstLoad) {
+      setOpacity(1);
+      setIsFirstLoad(false);
+    }
+  }, [isFirstLoad]);
 
   useEffect(() => {
     const images = [
@@ -47,7 +56,10 @@ const SentimentImage: React.FC<KimochiProps> = ({ averageScore }) => {
 
   return (
     <div>
-      <div className="max-w-xl mx-auto mt-4 min-h-[300px] md:min-h-[500px]">
+      <div
+        className="max-w-xl mx-auto mt-4 min-h-[300px] md:min-h-[500px]"
+        style={{ opacity: opacity, transition: "1000ms" }}
+      >
         {currentImage && (
           <CSSTransition
             in={!nextImage}
