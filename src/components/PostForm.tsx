@@ -28,7 +28,12 @@ const PostForm: React.FC<PostFormProps> = ({
           "Content-Type": "application/json",
         },
       }
-    );
+    ).then((res) => {
+      res && console.log("投稿完了");
+      res && console.log(res);
+    }).catch((err) => {
+      console.log(err);
+    });
     setPost("");
     fetchPosts();
   };
